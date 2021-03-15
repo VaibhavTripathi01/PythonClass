@@ -1,0 +1,45 @@
+#Creating a file and writing data in it
+import csv
+with open("OurFirstFile.csv",'w',newline='') as myfile:
+    filewriter=csv.writer(myfile)
+    filewriter.writerow(["SerialNumber","ItemName","OurBudget"])
+    filewriter.writerow(["1","Mobile","20000"])
+    filewriter.writerow(["2","Laptop","50000"])
+    filewriter.writerow(["3","Bike","120000"])
+    filewriter.writerow(["4","Mobile","20000"])
+    filewriter.writerow(["5","Laptop","50000"])
+    filewriter.writerow(["6","Bike","120000"])
+    
+#Reading the data and 
+with open("OurFirstFile.csv",'r') as ourfile:
+    ourfileReader=csv.reader(ourfile)
+    for rows in ourfileReader:
+      print(rows)
+
+
+
+
+#find number of times value present
+import csv
+
+with open("OurFirstFile.csv",'r') as ourfile:
+    ourfileReader=csv.reader(ourfile)
+    next(ourfile)
+    #total=0
+    count=0
+    for rows in ourfileReader:
+        for insiderow in rows:#SerialNumber
+            if 'i' in insiderow:
+                count+=1
+    print("i keyword comes ",count,"times")
+    
+    
+#Append Data
+import csv
+with open("OurAppendedFile.txt",'w',newline='') as ournewfile:
+    ourfilewriter=csv.writer(ournewfile)
+    with open("OurFirstFile.csv",'r') as ouroldfile:
+        ourfilereader=csv.reader(ouroldfile)
+        for row in ourfilereader:
+            if(row[1]=="Mobile" or row[1]=='ItemName'):
+                ourfilewriter.writerow(row)
